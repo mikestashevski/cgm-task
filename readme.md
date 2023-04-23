@@ -107,4 +107,27 @@ provided by this backend service. The frontend application can be found in anoth
 
 [https://github.com/mikestashevski/cgm-task-ui/tree/staszewski](https://github.com/mikestashevski/cgm-task-ui/tree/staszewski)
 
+# Docker Setup
 
+The Dockerfile here is designed to create an image with both the Java 11 application and the Node.js frontend
+application. The Dockerfile is composed of three stages:
+
+1. **Stage 1**: Build and run the Java 11 application. The JAR file is copied into the Docker image and the app is
+   exposed on port 8080.
+2. **Stage 2**: Build the Node.js application. The repository is cloned, dependencies are installed, and the app is
+   built. The app is exposed on port 3000.
+3. **Stage 3**: Combine both applications into a single image. Both the Java and Node.js applications are copied into
+   the final image, which is based on the OpenJDK 11 JRE.
+
+## Building the Docker Image
+
+To build the Docker image, follow these steps:
+
+1. Navigate to the project directory containing the Dockerfile.
+2. Run the following command to build the Docker image:
+
+docker build -t cgm-task-image .
+
+**Note**: Due to time constraints, this Dockerfile setup has not been thoroughly tested. It is possible that you may
+encounter issues during the build process or when running the image. If you experience any problems, please review the
+Dockerfile and make any necessary adjustments.
